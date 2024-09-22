@@ -1,42 +1,64 @@
-## list
-desc:
-    lists all uncompleted tasks, sorted in priority order
-    tasks with the same priority are sorted alpabetically
+***
 
-output:
-    `[id], [priority], [name], ?[desc], ?[marked]`
+### list
 
-flags:
-    -u lists ALL tasks (even completed)
+#### desc
+- lists all uncompleted tasks
+- sorted in priority order
+- tasks with the same priority are sorted alpabetically
 
+#### output
+`{id}, {priority}, {name}, ?{desc}, ?{marked}`
 
+#### flags
+`-a` lists ALL tasks (even completed)
 
-## add
-desc:
-    add a new task into the list
-    also gives the task an unique id to be indentified by
+***
 
-input: (m=mandatory, o=optional)
-    name[str,m], priority[int,m], desc[str,o] marked[bool,o]
-    priority = 0(least) - 100(most)
-    marked = true | false
+### add
 
-flags:
-    -p insert everything in the command instead of using stdin
+#### desc
+- add a new task into the list
+- gives the task a unique id
 
+#### input (m=mandatory, o=optional)
+- name = string
+- priority = int, 0-100, (least-most)
+- desc? = string
+- marked? = bool
 
+#### flags
+`-p` insert everything in the command instead of using stdin
 
-## mark
-desc:
-    mark a task as completed or uncompleted
+***
 
-input:
-    id[int,m]
+### mark
+
+#### desc
+- mark a task as completed or uncompleted
+
+#### input
+- id = int
     
 
-## remove
-desc:
-    remove a flag completely from the list
+***
 
-input:
-    id[int,m]
+### edit
+
+#### desc
+- edit a task
+
+#### input
+- id = int
+
+***
+
+### remove
+
+#### desc
+- remove a task
+
+#### input
+- id = int
+
+***
