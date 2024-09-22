@@ -13,15 +13,17 @@ func main() {
 
 	switch os.Args[1] {
 	case "list":
-		fmt.Println("listttt")
+		list()
 	case "add":
-		fmt.Println("addddd")
-	case "remove":
-		fmt.Println("removeeee")
+		add()
 	case "mark":
-		fmt.Println("markkkkk")
+		mark()
+	case "edit":
+		edit()
+	case "remove":
+		remove()
 	case "help":
-		fmt.Println("helppppp")
+		help()
 	default:
 		fmt.Println("Unkown command:", os.Args[1])
 		fmt.Println("Usage: todo [list|add|remove|mark|help]")
