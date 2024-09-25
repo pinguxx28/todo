@@ -44,8 +44,8 @@ func getInputNum(prompt string, low, high int) string {
 			continue
 		}
 
-		if (inputNum >= low && inputNUm <= high) {
-			return priority
+		if (inputNum >= low && inputNum <= high) {
+			return input
 		}
 
 		fmt.Printf("Please enter a number between %v and %v\n", low, high)
