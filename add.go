@@ -33,20 +33,22 @@ func getInput(prompt string, mandatory bool) string {
 	}
 }
 
-func getPriority() string {
+func getInputNum(prompt string, low, high int) string {
+	newPrompt := fmt.Sprintf("%v (%v-%v)", prompt, low, high)
+
 	for {
-		priority := getInput("Priority (0-10)", true)
-		priorityInt, err := strconv.Atoi(priority)
+		input := getInput(newPrompt, true)
+		inputNum, err := strconv.Atoi(input)
 		if err != nil {
 			fmt.Println("Couldn't convert string to int:", err)
 			continue
 		}
 
-		if (priorityInt >= 0 && priorityInt <= 10) {
+		if (inputNum >= low && inputNUm <= high) {
 			return priority
 		}
 
-		fmt.Println("Please enter a number between 0 and 10")
+		fmt.Printf("Please enter a number between %v and %v\n", low, high)
 	}
 }
 
@@ -129,7 +131,7 @@ func appendTask(task []string) {
 
 func add() {
 	name     := getInput("Name", true)
-	priority := getPriority()
+	priority := getInputNum("Priority", 0, 10)
 	desc     := getInput("Desc", false)
 	marking  := getMarking()
 
