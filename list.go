@@ -4,6 +4,7 @@ import (
 	"os"
 	"fmt"
 	"sort"
+	"slices"
 	"strings"
 	"strconv"
 	"text/tabwriter"
@@ -25,29 +26,28 @@ func sortTasks(tasks [][]string) {
 	})
 }
 
-func printTasks(tasks [][]string) {
-	// TODO: handle errors
-	
-	w := tabwriter.NewWriter(os.Stdout, 0, 0, 3, ' ', tabwriter.AlignRight)
+func printTasks(tasks [][]string, flags []string) {
+	writer := tabwriter.NewWriter(os.Stdout, 0, 0, 3, ' ', tabwriter.AlignRight)
+	listAll := slices.Contains(flags, "a")
 
 	for _, task := range(tasks) {
 		// don't list completed tasks
-		if task[4] == "true" {
+		if task[4] == "true" && !listAll {
 			continue
 		}
 
 		for i := 0; i < 3; i++ {
-			fmt.Fprintf(w, "%v\t", task[i])
+			fmt.Fprintf(writer, "%v\t", task[i])
 		}
 
-		fmt.Fprintln(w, "")
+		fmt.Fprintln(writer, "")
 	}
 
-	w.Flush()
+	writer.Flush()
 }
 
-func list() {
+func list(flags []string) {
 	tasks := getAllTasks()
 	sortTasks(tasks)
-	printTasks(tasks)
+	printTasks(tasks, flags)
 }
