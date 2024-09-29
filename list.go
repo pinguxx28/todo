@@ -29,6 +29,12 @@ func sortTasks(tasks [][]string) {
 func printTasks(tasks [][]string, flags []string) {
 	writer := tabwriter.NewWriter(os.Stdout, 0, 0, 3, ' ', tabwriter.AlignRight)
 	listAll := slices.Contains(flags, "a")
+	listEverything := slices.Contains(flags, "e")
+
+	listRange := 3
+	if listEverything {
+		listRange = 5
+	}
 
 	for _, task := range(tasks) {
 		// don't list completed tasks
@@ -36,7 +42,7 @@ func printTasks(tasks [][]string, flags []string) {
 			continue
 		}
 
-		for i := 0; i < 3; i++ {
+		for i := 0; i < listRange; i++ {
 			fmt.Fprintf(writer, "%v\t", task[i])
 		}
 
