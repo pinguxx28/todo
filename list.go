@@ -31,6 +31,11 @@ func printTasks(tasks [][]string) {
 	w := tabwriter.NewWriter(os.Stdout, 0, 0, 3, ' ', tabwriter.AlignRight)
 
 	for _, task := range(tasks) {
+		// don't list completed tasks
+		if task[4] == "true" {
+			continue
+		}
+
 		for i := 0; i < 3; i++ {
 			fmt.Fprintf(w, "%v\t", task[i])
 		}
