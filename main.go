@@ -12,7 +12,7 @@ func getFlags(args []string) []string {
 	}
 
 	var flag string
-	for _, arg := range(os.Args) {
+	for _, arg := range(args) {
 		if arg[0] == '-' {
 			flag = arg[1:]
 			break
@@ -22,15 +22,31 @@ func getFlags(args []string) []string {
 	return strings.Split(flag, "")
 }
 
+func getCommand(args []string) string {
+	if len(args) == 2 {
+		return args[1]
+	}
+
+	for i, arg := range(args) {
+		if arg[0] != '-' && i > 0 {
+			return arg
+		}
+	}
+
+	return "help" // just return help as default
+}
+
 func main() {
 	if len(os.Args) == 1 || len(os.Args) > 3 {
-		fmt.Println("Usage: todo [list|add|remove|mark|help]")
+		fmt.Println("Too many or too few arguments")
+		fmt.Println("Usage: todo [list|add|remove|mark|edit|help]")
 		os.Exit(1)
 	}
 
 	flags := getFlags(os.Args)
+	command := getCommand(os.Args)
 
-	switch os.Args[1] {
+	switch command {
 	case "list":
 		list(flags)
 	case "add":
@@ -45,7 +61,7 @@ func main() {
 		help()
 	default:
 		fmt.Println("Unkown command:", os.Args[1])
-		fmt.Println("Usage: todo [list|add|remove|mark|help]")
+		fmt.Println("Usage: todo [list|add|remove|mark|edit|help]")
 		os.Exit(1)
 	}
 }
