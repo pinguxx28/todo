@@ -56,11 +56,11 @@ func getMarking() string {
 	for {
 		marking := getInput("Marking", false)
 
-		if marking == "false" || marking == "true" {
-			return marking
+		if marking == "true" {
+			return "true"
+		} else {
+			return "false"
 		}
-
-		fmt.Println("Please enter a boolean, (true or false)!")
 	}
 }
 
