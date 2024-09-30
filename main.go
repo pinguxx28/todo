@@ -41,7 +41,7 @@ func getCommand(args []string) string {
 func main() {
 	if len(os.Args) == 1 || len(os.Args) > 3 {
 		fmt.Println("Too many or too few arguments")
-		fmt.Println("Usage: todo [list|add|remove|mark|edit|help]")
+		fmt.Println("Usage: todo [list|add|remove|mark|edit|reset|help]")
 		os.Exit(1)
 	}
 
@@ -59,11 +59,13 @@ func main() {
 		src.Edit()
 	case "remove":
 		src.Remove()
+	case "reset":
+		src.Reset()
 	case "help":
 		src.Help()
 	default:
 		fmt.Println("Unkown command:", command)
-		fmt.Println("Usage: todo [list|add|remove|mark|edit|help]")
+		fmt.Println("Usage: todo [list|add|remove|mark|edit|reset|help]")
 		os.Exit(1)
 	}
 }
