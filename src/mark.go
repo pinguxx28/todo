@@ -1,4 +1,4 @@
-package main
+package src
 
 import (
 	"os"
@@ -17,7 +17,7 @@ func reverseBoolStr(str string) string {
 	}
 }
 
-func mark() {
+func Mark() {
 	tasks := getAllTasks()
 	id := atoi(getInputNum("id", 0, 999))
 

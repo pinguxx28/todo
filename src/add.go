@@ -1,4 +1,4 @@
-package main
+package src
 
 import (
 	"os"
@@ -129,7 +129,7 @@ func appendTask(task []string) {
 }
 
 
-func add() {
+func Add() {
 	name     := getInput("Name", true)
 	priority := getInputNum("Priority", 0, 10)
 	desc     := getInput("Desc", false)

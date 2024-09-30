@@ -1,4 +1,4 @@
-package main
+package src
 
 import (
 	"os"
@@ -22,7 +22,7 @@ func getEditedPart(partToEdit int) string {
 	}
 }
 
-func edit() {
+func Edit() {
 	tasks := getAllTasks()
 	id := atoi(getInputNum("id", 0, 999))
 	index := findTaskById(tasks, id)

@@ -4,6 +4,8 @@ import (
 	"os"
 	"fmt"
 	"strings"
+
+	"todo/src"
 )
 
 func getFlags(args []string) []string {
@@ -48,19 +50,19 @@ func main() {
 
 	switch command {
 	case "list":
-		list(flags)
+		src.List(flags)
 	case "add":
-		add()
+		src.Add()
 	case "mark":
-		mark()
+		src.Mark()
 	case "edit":
-		edit()
+		src.Edit()
 	case "remove":
-		remove()
+		src.Remove()
 	case "help":
-		help()
+		src.Help()
 	default:
-		fmt.Println("Unkown command:", os.Args[1])
+		fmt.Println("Unkown command:", command)
 		fmt.Println("Usage: todo [list|add|remove|mark|edit|help]")
 		os.Exit(1)
 	}

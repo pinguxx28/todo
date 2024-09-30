@@ -1,4 +1,4 @@
-package main
+package src
 
 import (
 	"os"
@@ -52,7 +52,7 @@ func printTasks(tasks [][]string, flags []string) {
 	writer.Flush()
 }
 
-func list(flags []string) {
+func List(flags []string) {
 	tasks := getAllTasks()
 	sortTasks(tasks)
 	printTasks(tasks, flags)

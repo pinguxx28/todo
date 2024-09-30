@@ -1,10 +1,10 @@
-package main
+package src
 
 import (
 	"fmt"
 )
 
-func help() {
+func Help() {
 	fmt.Println("todo - a simple CLI todo list")
 	fmt.Println("Usage: todo [list|add|remove|mark|edit|help] [FLAGS]")
 	fmt.Println("> list[a|e]: lists all tasks (a=all, e=everything)")

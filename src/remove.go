@@ -1,4 +1,4 @@
-package main
+package src
 
 import (
 	"os"
@@ -38,7 +38,7 @@ func setAllTasks(tasks [][]string) {
 	}
 }
 
-func remove() { 
+func Remove() { 
 	tasks := getAllTasks()
 	id := atoi(getInputNum("id", 0, 999))
 
